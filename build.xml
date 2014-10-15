@@ -1,0 +1,20 @@
+<project name="ServiceProviderProcessor" basedir="." default="jar">
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+
+	<target name="build">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src" destdir="build/classes" debug="true" includeantruntime="false">
+		</javac>
+		<copy todir="build/classes/META-INF">
+			<fileset dir="src/META-INF" />
+		</copy>
+	</target>
+
+	<target name="jar" depends="build">
+		<mkdir dir="build/jar"/>
+		<jar destfile="build/jar/ServiceProviderProcessor.jar" basedir="build/classes">
+		</jar>
+	</target>
+</project>
